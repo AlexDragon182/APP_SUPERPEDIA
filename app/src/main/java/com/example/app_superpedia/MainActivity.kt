@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         retrofit = getRetrofit()
         initUI()
-
     }
 
     private fun initUI() {
