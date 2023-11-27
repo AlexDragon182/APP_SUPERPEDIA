@@ -11,6 +11,7 @@ import com.example.app_superpedia.API.APIService
 import com.example.app_superpedia.API.HeroDataResponse
 import com.example.app_superpedia.HeroeDetail.Companion.EXTRA_ID
 import com.example.app_superpedia.RecyclerView.HeroAdapter
+import com.example.app_superpedia.Settings.SettingsActivity
 import com.example.app_superpedia.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+        binding.fbSettings.setOnClickListener { navigatetoSettings() }
         binding.svSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchByName(query.orEmpty())
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextChange(newText: String?) = false
         })
 
-        adapter = HeroAdapter{ superheroId ->  navigateToDetail(superheroId) }
+        adapter = HeroAdapter { superheroId -> navigateToDetail(superheroId) }
         binding.rvSuperhero.setHasFixedSize(true)
         binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
@@ -56,7 +58,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun searchByName(query: String) {
+    private fun navigatetoSettings() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
+
+    }
+
+        private fun searchByName(query: String) {
             binding.progressBar.isVisible = true
             CoroutineScope(Dispatchers.IO).launch {
                 val myResponse: Response<HeroDataResponse> =

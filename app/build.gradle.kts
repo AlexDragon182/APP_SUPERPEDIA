@@ -62,6 +62,8 @@ dependencies {
         // For loading and tinting drawables on older versions of the platform
         implementation("androidx.appcompat:appcompat-resources:$appcompat_version")
 
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 
 
 }
