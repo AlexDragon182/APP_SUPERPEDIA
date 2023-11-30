@@ -1,4 +1,4 @@
-package com.aristidevs.androidmaster.settings
+package com.example.app_superpedia.Settings
 
 data class SettingsModel(
     var volume: Int,
